@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={`${oxanium.variable} ${montserrat.variable}`}>
-      <body>{children}</body>
+      <body className="bg-gray-900 text-gray-100 antialiased">{children}</body>
     </html>
   )
 }

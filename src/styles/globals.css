@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @theme {
+  --color-*: initial;
+
   --color-blue: #6f9de2;
   --color-purple: #9871f3;
   --color-danger: #f05d6c;
+  
   --color-gray-100: #dae4f2;
   --color-gray-200: #c8d0da;
   --color-gray-300: #95a1b1;
@@ -15,4 +18,6 @@
 
   --font-heading: var(--font-oxanium);
   --font-sans: var(--font-montserrat);
+
+  ---radius-xl:0.625rem;
 }

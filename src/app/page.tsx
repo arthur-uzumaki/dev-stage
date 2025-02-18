@@ -1,8 +1,27 @@
+import { Button } from '@/components/button'
+import { IconButton } from '@/components/icon-button'
+import { Input } from '@/components/input'
+import { ArrowRight, Copy, User } from 'lucide-react'
+
 export default function Home() {
   return (
-    <main className="h-screen flex items-center justify-center">
-      <h1 className="font-heading">Oi</h1>
-      <p className="text-red-500 font-bold text-4xl">Hello world!</p>
+    <main>
+      <Button type="button">
+        <Button.Title title="Enviar" />
+        <Button.Icon icon={ArrowRight} />
+      </Button>
+      <IconButton>
+        <IconButton.Icon icon={Copy} />
+      </IconButton>
+
+      <Input>
+        <Input.Icon icon={User} />
+        <Input.Field placeholder="Digite  seu e-mail " />
+      </Input>
+      <Input error>
+        <Input.Icon icon={User} />
+        <Input.Field placeholder="Digite  seu e-mail " />
+      </Input>
     </main>
   )
 }
