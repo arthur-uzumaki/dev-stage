@@ -1,11 +1,11 @@
-import type { ComponentProps, JSX, ReactNode } from 'react'
 import type { LucideIcon } from 'lucide-react'
+import type { ComponentProps } from 'react'
 
 interface ButtonProps extends ComponentProps<'button'> {}
 function Button({ children, ...rest }: ButtonProps) {
   return (
     <button
-      className="flex h-12 w-full items-center justify-between rounded-xl bg-gray-500 px-5 text-blue transition-colors duration-300 hover:bg-blue hover:text-gray-900 "
+      className="flex h-12 w-full cursor-pointer items-center justify-between rounded-xl bg-gray-500 px-5 text-blue transition-colors duration-300 hover:bg-blue hover:text-gray-900 "
       {...rest}
     >
       {children}
