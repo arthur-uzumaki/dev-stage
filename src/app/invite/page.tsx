@@ -1,10 +1,19 @@
-import logo from '@/assets/Logo.svg'
-import { IconButton } from '@/components/icon-button'
-import { Input } from '@/components/input'
 import { Copy, Link } from 'lucide-react'
 import Image from 'next/image'
 
+import logo from '@/assets/Logo.svg'
+
+import { InviteLinkInput } from '@/app/invite/invite-link-input'
+import { Ranking } from '@/app/invite/raking'
+import { Stats } from '@/app/invite/stats'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'invite',
+}
+
 export default function InvitePage() {
+  const inviteLink = 'http://3000/invite/e23rwfsvvsdvbdgbdf'
   return (
     <div className="flex min-h-dvh flex-col items-center justify-between gap-16 md:flex-row">
       <div className="flex w-full max-w-[550px] flex-col gap-10">
@@ -31,19 +40,11 @@ export default function InvitePage() {
             </p>
           </div>
 
-          <Input>
-            <Input.Icon className="size-5" icon={Link} />
-
-            <Input.Field
-              readOnly
-              defaultValue={'http://3000/invite/e23rwfsvvsdvbdgbdf'}
-            />
-            <IconButton className="-mr-2">
-              <IconButton.Icon icon={Copy} />
-            </IconButton>
-          </Input>
+          <InviteLinkInput inviteLink={inviteLink} />
+          <Stats />
         </div>
       </div>
+      <Ranking />
     </div>
   )
 }

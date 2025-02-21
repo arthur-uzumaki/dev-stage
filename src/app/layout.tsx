@@ -1,9 +1,13 @@
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Montserrat, Oxanium } from 'next/font/google'
+import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
-  title: 'devstage',
+  title: {
+    template: 'devstage | %s',
+    default: 'devstage',
+  },
 }
 
 const oxanium = Oxanium({
@@ -27,6 +31,7 @@ export default function RootLayout({
     <html lang="pt-br" className={`${oxanium.variable} ${montserrat.variable}`}>
       <body className="bg-[url(/background.png)] bg-gray-900 bg-top bg-no-repeat text-gray-100 antialiased md:bg-right-top">
         <main className="mx-auto max-w-[1240px] px-5 py-8 md:py-0 ">
+          <Toaster richColors />
           {children}
         </main>
       </body>
