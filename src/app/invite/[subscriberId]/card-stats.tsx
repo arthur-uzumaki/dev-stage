@@ -1,7 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
 
 interface CardStatsProps {
-  title: string
+  title: string | number
   subtitle: string
   icon: LucideIcon
 }

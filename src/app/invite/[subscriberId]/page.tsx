@@ -3,17 +3,24 @@ import Image from 'next/image'
 
 import logo from '@/assets/Logo.svg'
 
-import { InviteLinkInput } from '@/app/invite/invite-link-input'
-import { Ranking } from '@/app/invite/raking'
-import { Stats } from '@/app/invite/stats'
 import type { Metadata } from 'next'
+import { InviteLinkInput } from './invite-link-input'
+import { Ranking } from './raking'
+import { Stats } from './stats'
 
 export const metadata: Metadata = {
   title: 'invite',
 }
 
-export default function InvitePage() {
-  const inviteLink = 'http://3000/invite/e23rwfsvvsdvbdgbdf'
+interface InvitePageProps {
+  params: Promise<{ subscriberId: string }>
+}
+
+export default async function InvitePage({ params }: InvitePageProps) {
+  const { subscriberId } = await params
+  console.log(subscriberId)
+
+  const inviteLink = `http://localhost:3333/invites/${subscriberId}`
   return (
     <div className="flex min-h-dvh flex-col items-center justify-between gap-16 md:flex-row">
       <div className="flex w-full max-w-[550px] flex-col gap-10">
@@ -41,7 +48,7 @@ export default function InvitePage() {
           </div>
 
           <InviteLinkInput inviteLink={inviteLink} />
-          <Stats />
+          <Stats subscriberId={subscriberId} />
         </div>
       </div>
       <Ranking />

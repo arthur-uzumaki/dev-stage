@@ -4,7 +4,10 @@ import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/button'
 import { Input } from '@/components/input'
+import { subscribeToEvent } from '@/http/api'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 const formSchema = z.object({
@@ -15,6 +18,9 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>
 
 export function SubScriptionForm() {
+  const { push } = useRouter()
+  const searchParams = useSearchParams()
+
   const {
     register,
     handleSubmit,
@@ -23,8 +29,15 @@ export function SubScriptionForm() {
     resolver: zodResolver(formSchema),
   })
 
-  function handleSubscribe(data: FormSchema) {
-    console.log(data)
+  async function handleSubscribe({ email, name }: FormSchema) {
+    try {
+      const referrer = searchParams.get('referrer')
+      const { subscriberId } = await subscribeToEvent({ email, name, referrer })
+
+      push(`/invite/${subscriberId}`)
+    } catch (error) {
+      toast.error('Não foi possível fazer sua inscrição.')
+    }
   }
 
   return (
